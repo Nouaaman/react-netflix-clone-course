@@ -1,0 +1,22 @@
+footer{
+    border-top: 10px solid var(--dark-secondary-color);
+    color: var(--secondary-color);
+    width: 100%;
+    padding: 12px;
+}
+footer .container{
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+}
+footer .links{
+    font-size: 0.8em;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,auto));
+    grid-gap: 16px;
+}
+footer .links ul{
+    width: max-content;
+    white-space: nowrap;
+}

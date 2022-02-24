@@ -1,3 +1,13 @@
+:root {
+  --primary-color: #E50914;
+  --secondary-color: #777;
+  --dark-secondary-color: #333;
+  --main-text-color: rgb(255, 255, 255);
+  --main-bg-color: rgb(14, 14, 14);
+}
+*{
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: 'Roboto', 'Oxygen',
@@ -5,7 +15,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--main-text-color);
+  background-color: var(--main-bg-color);
+
+
 }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: .2s ease-in;
+}
+
 /* 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

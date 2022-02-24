@@ -1,0 +1,22 @@
+.not-found {
+    margin: auto;
+    padding: 12px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ 
+ 
+.not-found h1 {
+    font-size: 4em;
+    font-weight: 300;
+}
+
+.not-found .btn {
+    padding: 12px 21px;
+    background-color: var(--main-text-color);
+    color: var(--dark-secondary-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
