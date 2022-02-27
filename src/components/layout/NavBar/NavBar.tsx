@@ -9,7 +9,7 @@ function NavBar() {
     return (
         <header>
             <div className='logo'>
-                <Link to='/'>  <img src='assets/netflix-logo.svg' /></Link>
+                <Link to='/'>  <img src='assets/netflix-logo.svg' alt='logo'/></Link>
             </div>
             <nav>
                 <ul className='nav-links'>
