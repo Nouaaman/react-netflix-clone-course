@@ -5,6 +5,8 @@ header {
     display: flex;
     justify-content: stretch;
     align-items: center;
+    position: relative;
+    height: 90px;
 }
 
 header .logo {
@@ -16,19 +18,78 @@ header .logo img {
     width: 100%;
 }
 
+header .menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
 nav ul.nav-links {
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
     font-weight: 500;
-
+    gap: 2.5rem;
 }
-nav ul.nav-links .active{
+
+nav ul.nav-links .active {
     color: var(--main-text-color);
 }
 
 
 nav ul.nav-links a:hover {
     color: var(--main-text-color);
+}
+
+
+
+@media (max-width: 950px) {
+    header {
+        position: fixed;
+        width: 100%;
+        height: 70;
+    }
+
+    header .menu-toggle {
+        margin-right: 2rem;
+        display: block;
+    }
+
+
+    header .logo {
+        width: 100px;
+        min-width: 120px;
+    }
+
+    header nav {
+        position: fixed;
+        z-index: 100;
+        top: 90px;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        width: 320px;
+        height: max-content;
+        background-color: var(--main-bg-color);
+        padding: 12px;
+        transition: transform .2s ease-in-out,opacity .2s ease-in-out;
+        width: 50%;
+        max-width: 400px;
+        min-width: 300px;
+        height: 100%;
+        box-shadow: 2px 100px 90px black;
+    }
+
+    header nav.hidden {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    nav ul.nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 2rem;
+    }
 }

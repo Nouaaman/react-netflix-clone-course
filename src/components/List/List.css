@@ -1,0 +1,34 @@
+article.list .content {
+    overflow-x: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 8px;
+}
+
+article.list {
+    margin-bottom: 5rem;
+}
+article.list .icon {
+    font-size:1.2em;
+}
+
+article.list h2{
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+   color: var(--main-text-color);
+   display: inline-block;
+}
+article.list h2:hover{
+   text-decoration: underline;
+}
+
+@media (max-width: 456px) {
+    article.list h2{
+        font-size: 1.3rem;
+    }
+    article.list {
+        margin-bottom: 3rem;
+    }
+}

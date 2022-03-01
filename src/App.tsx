@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { TmdbProvider } from "./context/tmdb/TmdbContext";
 import Home from './pages/Home/Home'
