@@ -65,7 +65,7 @@ nav ul.nav-links a:hover {
         position: fixed;
         z-index: 100;
         top: 90px;
-        left: 0;
+        left: -100%;
         padding: 0;
         margin: 0;
         width: 320px;
@@ -78,11 +78,12 @@ nav ul.nav-links a:hover {
         min-width: 300px;
         height: 100%;
         box-shadow: 2px 100px 90px black;
+        opacity: 0;
     }
 
-    header nav.hidden {
-        transform: translateX(-100%);
-        opacity: 0;
+    header nav.shown {
+        transform: translateX(200%);
+        opacity: 1;
     }
 
     nav ul.nav-links {

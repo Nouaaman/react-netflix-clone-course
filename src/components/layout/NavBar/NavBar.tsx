@@ -10,14 +10,14 @@ function NavBar() {
     return (
         <header>
             <div className='menu-toggle' onClick={() => setShown(!isShown)}>
-                {!isShown && ( <i className="fa-solid fa-bars fa-2xl"></i> )}
+                {!isShown && (<i className="fa-solid fa-bars fa-2xl"></i>)}
                 {isShown && (<i className="fa-solid fa-xmark fa-2xl"></i>)}
 
             </div>
             <div className='logo'>
                 <Link to='/'>  <img src='assets/netflix-logo.svg' alt='logo' /></Link>
             </div>
-            <nav className={isShown?'':'hidden'}>
+            <nav className={isShown ? 'shown' : ''}>
                 <ul className='nav-links'>
                     <NavLink to='Home' className={['/', 'home'].includes(pathname) ? 'active' : ''}  >
                         <li>Home</li>
