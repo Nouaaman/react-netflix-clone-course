@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { TmdbProvider } from "./context/tmdb/TmdbContext";
+import Landing from "./pages/Landing/Landing";
 import Home from './pages/Home/Home'
 import NotFound from './pages/NotFound/NotFound'
 import TVShows from './pages/TVShows/TVShows'
@@ -16,8 +17,10 @@ function App() {
             <BrowserRouter>
                 <NavBar />
                 <Routes>
-                    <Route index element={<Home />}></Route>
-                    <Route path='home' element={<Home />}></Route>
+                    <Route index element={<Landing />}></Route>
+                    <Route path='home' element={<Landing />}></Route>
+                    {/* <Route index element={<Home />}></Route>
+                    <Route path='home' element={<Home />}></Route> */}
                     <Route path='TVShows' element={<TVShows />}></Route>
                     <Route path='movies' element={<Movies />}></Route>
                     <Route path='latest' element={<Latest />}></Route>

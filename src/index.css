@@ -52,6 +52,18 @@ a {
   transition: .2s ease-in;
 }
 
+main {
+  padding: 30px 40px;
+  width: 100%;
+}
+
+@media (max-width: 456px) {
+  main {
+    padding: 100px 12px;
+    width: 100%;
+  }
+}
+
 /* 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

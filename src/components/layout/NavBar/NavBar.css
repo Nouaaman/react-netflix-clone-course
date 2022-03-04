@@ -1,12 +1,13 @@
 header {
-    /* width: 100%; */
-    background-color: var(--main-bg-color);
+    width: 100%;
+    /* background-color: var(--main-bg-color); */
     padding: 30px 40px;
     display: flex;
     justify-content: stretch;
     align-items: center;
-    position: relative;
     height: 90px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    z-index: 100;
 }
 
 header .logo {
@@ -22,6 +23,7 @@ header .menu-toggle {
     display: none;
     cursor: pointer;
 }
+
 
 nav ul.nav-links {
     display: flex;
@@ -42,7 +44,6 @@ nav ul.nav-links a:hover {
 }
 
 
-
 @media (max-width: 950px) {
     header {
         position: fixed;
@@ -52,7 +53,15 @@ nav ul.nav-links a:hover {
 
     header .menu-toggle {
         margin-right: 2rem;
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+    }
+
+    header .menu-toggle .icon {
+        font-size: 2rem;
     }
 
 
@@ -65,25 +74,18 @@ nav ul.nav-links a:hover {
         position: fixed;
         z-index: 100;
         top: 90px;
-        left: -100%;
-        padding: 0;
+        left: -400px;
         margin: 0;
-        width: 320px;
-        height: max-content;
         background-color: var(--main-bg-color);
         padding: 12px;
-        transition: transform .2s ease-in-out,opacity .2s ease-in-out;
-        width: 50%;
-        max-width: 400px;
-        min-width: 300px;
+        transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+        width: 340px;
         height: 100%;
         box-shadow: 2px 100px 90px black;
-        opacity: 0;
     }
 
     header nav.shown {
-        transform: translateX(200%);
-        opacity: 1;
+        transform: translateX(400px);
     }
 
     nav ul.nav-links {

@@ -83,7 +83,6 @@ export const TmdbProvider = ({ children }: Props) => {
             items.push(item)
 
         })
-        /* !todo chane type and url of api */
         dispatch({
             type: 'GET_POPULAR_MOVIES',
             payload: items

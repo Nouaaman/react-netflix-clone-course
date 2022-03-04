@@ -10,9 +10,8 @@ function NavBar() {
     return (
         <header>
             <div className='menu-toggle' onClick={() => setShown(!isShown)}>
-                {!isShown && (<i className="fa-solid fa-bars fa-2xl"></i>)}
-                {isShown && (<i className="fa-solid fa-xmark fa-2xl"></i>)}
-
+                {!isShown && (<i className="fa-solid fa-bars icon"></i>)}
+                {isShown && (<i className="fa-solid fa-xmark icon"></i>)}
             </div>
             <div className='logo'>
                 <Link to='/'>  <img src='assets/netflix-logo.svg' alt='logo' /></Link>
