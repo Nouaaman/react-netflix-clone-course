@@ -15,7 +15,7 @@ function App() {
     return (
         <TmdbProvider>
             <BrowserRouter>
-                <NavBar />
+                {/* <NavBar /> */}
                 <Routes>
                     <Route index element={<Landing />}></Route>
                     <Route path='home' element={<Landing />}></Route>
@@ -27,7 +27,7 @@ function App() {
                     <Route path='mylist' element={<MyList />}></Route>
                     <Route path="*" element={<NotFound />} ></Route>
                 </Routes>
-                <Footer />
+                {/* <Footer /> */}
             </BrowserRouter>
         </TmdbProvider>
     )
