@@ -132,18 +132,47 @@ main.landing .story-card:nth-child(last) {
 
 main.landing .story-card-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    gap: 8%;
     padding: 100px 30px;
-    margin: auto;
-
 }
 
 .story-card-text {
     width: 48%;
     min-width: 200px;
+    max-width: 590px;
 }
+
+main.landing .story-card.faq-card .story-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 100px 30px;
+    max-width: 990px;
+    margin: auto;
+}
+
+main.landing .story-card.faq-card .story-card-text {
+    width: 90%;
+    min-width: 200px;
+    max-width: 90%;
+}
+
+main.landing .story-card.faq-card .story-card-text h1 {
+    text-align: center;
+}
+
+
+main.landing .story-card.faq-card .email-form {
+    width: 90%;
+}
+
+
+
+
 
 main.landing .story-card-container h1 {
     margin-top: 0;
@@ -162,17 +191,17 @@ main.landing .story-card-image {
 main.landing .story-card-image .story-card-image-container {
     position: relative;
     width: 100%;
-    background-color: blanchedalmond;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 
+
 main.landing .story-card-image-container img {
 
     width: 100%;
-    /* z-index: 2; */
+    z-index: 2;
 }
 
 main.landing .story-card-image-container video {
@@ -180,9 +209,52 @@ main.landing .story-card-image-container video {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
 }
 
+main.landing .story-card:nth-child(4) .story-card-image-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -86%);
+}
+
+main.landing .faq-card .faq-list {
+    list-style: none;
+    font-size: 1.2rem;
+    background-color: #333;
+    margin: 0;
+}
+
+
+main.landing .faq-card .faq-list button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    padding: 0.8em 1.2em 0.8em 1.2em;
+    font-weight: 400;
+    position: relative;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #333;
+}
+
+main.landing .faq-card .faq-list .faq-answer {
+    border-top: 2px solid #222;
+    overflow: hidden;
+}
+
+.faq-list .faq-answer.closed {
+    padding: 0;
+    height: 0;
+}
+
+.faq-list .faq-answer.opened {
+    padding: 0.8em 1.2em 0.8em 1.2em;
+    height: auto;
+}
 
 @media only screen and (max-width: 940px) {
     main.landing .story-header h1 {
@@ -219,7 +291,7 @@ main.landing .story-card-image-container video {
     main.landing .story-card {
         display: flex;
         flex-direction: column;
-        justify-content: stretch;
+        justify-content: center;
         align-items: center;
         padding: 40px 0;
         width: 100%;
@@ -236,10 +308,10 @@ main.landing .story-card-image-container video {
         width: 100%;
     }
 
+
     main.landing .story-card-image .story-card-image-container {
         position: relative;
         width: 100%;
-        background-color: blanchedalmond;
         display: flex;
         justify-content: center;
         align-items: center;
