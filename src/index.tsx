@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
+import { TmdbProvider } from "./context/tmdb/TmdbContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <TmdbProvider>
+      <App />
+    </TmdbProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

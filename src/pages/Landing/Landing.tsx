@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState ,MouseEvent} from 'react'
 import { Link } from "react-router-dom";
 import './Landing.css'
 
 function Landing() {
 
-    const [isOpened, setOpened] = useState(false);
 
-    const handleToggle = () => {
-        setOpened(!isOpened);
+    const handleToggle = (e: MouseEvent): void => {
+        e.preventDefault();
+        const target = e.target as HTMLButtonElement;
+        const faqAnswer = target.nextElementSibling;
+        faqAnswer?.classList.toggle('opened')
+
     };
     return (
         <>
@@ -108,13 +111,39 @@ function Landing() {
                                     What is Netflix?
                                     <i className="fa-solid fa-plus"></i>
                                 </button>
-                                <div className={isOpened ? 'faq-answer opened' : 'faq-answer closed'}>
+                                <div className='faq-answer closed'>
                                     <span>
                                         Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices. <br /><br />
                                         You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!
                                     </span>
                                 </div>
                             </li>
+                        
+                            <li>
+                                <button className='faq-question' onClick={handleToggle}>
+                                    What is Netflix?
+                                    <i className="fa-solid fa-plus"></i>
+                                </button>
+                                <div className='faq-answer closed'>
+                                    <span>
+                                        Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices. <br /><br />
+                                        You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <button className='faq-question' onClick={handleToggle}>
+                                    What is Netflix?
+                                    <i className="fa-solid fa-plus"></i>
+                                </button>
+                                <div className='faq-answer closed'>
+                                    <span>
+                                        Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices. <br /><br />
+                                        You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!
+                                    </span>
+                                </div>
+                            </li>
+
                         </ul>
 
                         <div className='email-form'>

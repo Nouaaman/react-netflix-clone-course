@@ -209,6 +209,7 @@ main.landing .story-card-image-container video {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 60%;
 }
 
 main.landing .story-card:nth-child(4) .story-card-image-container video {
@@ -223,6 +224,7 @@ main.landing .faq-card .faq-list {
     font-size: 1.2rem;
     background-color: #333;
     margin: 0;
+    padding: 0;
 }
 
 
@@ -246,14 +248,24 @@ main.landing .faq-card .faq-list .faq-answer {
     overflow: hidden;
 }
 
+main.landing .faq-card .faq-list .faq-answer span {
+    padding: 0.8em 1.2em 0.8em 1.2em;
+    display: block;
+}
+
 .faq-list .faq-answer.closed {
     padding: 0;
-    height: 0;
+    max-height: 0;
+
+    margin: 0;
+    transition: max-height .3s ease-in-out;
 }
 
 .faq-list .faq-answer.opened {
-    padding: 0.8em 1.2em 0.8em 1.2em;
-    height: auto;
+    max-height: 1000px;
+
+    transition: max-height .3s ease-in-out;
+
 }
 
 @media only screen and (max-width: 940px) {
