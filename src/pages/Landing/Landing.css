@@ -1,23 +1,3 @@
-header {
-    width: 100%;
-    /* background-color: var(--main-bg-color); */
-    padding: 30px 40px;
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
-    height: 90px;
-    z-index: 100;
-
-}
-
-header .logo {
-    width: 110px;
-    min-width: 110px;
-}
-
-header .logo img {
-    width: 100%;
-}
 
 main.landing {
     padding: 0;
@@ -77,6 +57,10 @@ main.landing .email-form {
     justify-content: center;
     /* background-color: burlywood; */
 
+}
+
+main.landing .email-form h3 {
+    text-align: center;
 }
 
 main.landing .email-form input,
@@ -222,9 +206,12 @@ main.landing .story-card:nth-child(4) .story-card-image-container video {
 main.landing .faq-card .faq-list {
     list-style: none;
     font-size: 1.2rem;
-    background-color: #333;
     margin: 0;
     padding: 0;
+}
+
+main.landing .faq-card .faq-list li {
+    margin-bottom: 8px;
 }
 
 
@@ -245,6 +232,8 @@ main.landing .faq-card .faq-list button {
 
 main.landing .faq-card .faq-list .faq-answer {
     border-top: 2px solid #222;
+    background-color: #333;
+
     overflow: hidden;
 }
 
