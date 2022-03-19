@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { TmdbProvider } from "./context/tmdb/TmdbContext";
+import { UserProvider } from "./context/user/UserContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <TmdbProvider>
-      <App />
-    </TmdbProvider>
-
+    <UserProvider>
+      <TmdbProvider>
+        <App />
+      </TmdbProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

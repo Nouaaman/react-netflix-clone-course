@@ -1,26 +1,41 @@
-import React from 'react'
-import TmdbContext from '../../context/tmdb/TmdbContext'
+import React, { useEffect } from 'react'
+import UserContext from '../../context/user/UserContext'
+import { useNavigate } from 'react-router';
 import './Login.css'
 
 function Home() {
+    const navigate = useNavigate()
+    const {
+        isConnected,
+        setIsConnected
+    } = React.useContext(UserContext)
 
-    // const { } = React.useContext(TmdbContext)
+    useEffect(() => {
+        if (isConnected) {
+            navigate('/home')
+        }
+    }, []
+    )
+    const handleLogin = () => {
+        setIsConnected(true);
+        navigate('/home')
+    }
 
     return (
         <main className='login'>
             <div className='form-container'>
-                <form action="#" className="container">
+                <div className="container">
                     <h1>Sign In</h1>
                     <div className="form-element">
-                        <input type="text" name="username" id="username" required />
+                        <input type="text" name="username" id="username" />
                         <label className="floating-label" htmlFor="username">Email or Phone Number</label>
                     </div>
                     <div className="form-element">
-                        <input type="password" name="password" id="password" required />
+                        <input type="password" name="password" id="password" />
                         <label className="floating-label" htmlFor="password">Password</label>
                     </div>
-                    <button className="btn">Sign In</button>
-                </form>
+                    <button className="btn" onClick={handleLogin}>Sign In</button>
+                </div>
             </div>
         </main>
 

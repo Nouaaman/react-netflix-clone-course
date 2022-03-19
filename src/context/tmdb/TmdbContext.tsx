@@ -8,8 +8,8 @@ type Props = {
 
 type DispatchData = { type: string, payload: MediaInterface[] }
 
+
 type TmdbContextType = {
-    isConnected: boolean,
     trending: MediaInterface[],
     popularMovies: MediaInterface[],
     popularTVShows: MediaInterface[],
@@ -26,17 +26,16 @@ const TMDB_IMAGE_URL = process.env.REACT_APP_TMDB_IMAGE_URL
 
 export const TmdbProvider = ({ children }: Props) => {
     const initialState: {
-        isConnected: boolean,
         trending: MediaInterface[],
         popularMovies: MediaInterface[],
         popularTVShows: MediaInterface[]
     } = {
-        isConnected: false,
         trending: [],
         popularMovies: [],
         popularTVShows: []
     }
     const [state, dispatch] = useReducer(TmdbReducer, initialState)
+
 
     //get trending movies and tvshows
     const fetchTrending = async () => {

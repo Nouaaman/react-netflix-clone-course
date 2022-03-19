@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 import Landing from "./pages/Landing/Landing";
@@ -12,11 +12,11 @@ import MyList from './pages/MyList/MyList'
 import Login from './pages/Login/Login'
 import NavBar from './components/layout/NavBar/NavBar'
 import Footer from './components/layout/Footer/Footer'
-import TmdbContext from "./context/tmdb/TmdbContext";
+import UserContext from "./context/user/UserContext";
 
 function App() {
 
-    const { isConnected } = React.useContext(TmdbContext)
+    const { isConnected } = React.useContext(UserContext)
 
     return (
 
@@ -39,7 +39,8 @@ function App() {
                 <Route path='movies' element={<Movies />}></Route>
                 <Route path='latest' element={<Latest />}></Route>
                 <Route path='mylist' element={<MyList />}></Route>
-                <Route path="login" element={<Login/>}></Route>
+                <Route path="login" element={<Login />}></Route>
+               
                 <Route path="*" element={<NotFound />} ></Route>
             </Routes>
             <Footer />

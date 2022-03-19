@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import './NavBar.css'
-import TmdbContext from "../../../context/tmdb/TmdbContext";
+import UserContext from "../../../context/user/UserContext";
 
 
 
 
 function NavBar() {
-    const { isConnected } = React.useContext(TmdbContext)
+    const { isConnected } = React.useContext(UserContext)
     const [isShown, setShown] = useState(false)
     const { pathname } = useLocation();
     return (
@@ -38,8 +38,7 @@ function NavBar() {
             {!isConnected &&
                 <div className="sign-in">
                     <NavLink to='login'><button className='sign-in-btn'>Sign In</button></NavLink>
-                </div>
-            }
+                </div>}
 
         </header>
     )
