@@ -10,12 +10,15 @@ type DispatchData = { type: string, payload: MediaInterface[] }
 
 
 type TmdbContextType = {
+    firstTrending: MediaInterface | null,
     trending: MediaInterface[],
     popularMovies: MediaInterface[],
     popularTVShows: MediaInterface[],
+    movies: MediaInterface[],
     fetchTrending(): void,
-    fetchPopularMovies(): void
-    fetchPopularTVShows(): void
+    fetchPopularMovies(): void,
+    fetchPopularTVShows(): void,
+    fetchMovies(page: number): void
 };
 
 const TmdbContext = createContext<TmdbContextType>({} as TmdbContextType)
@@ -26,13 +29,17 @@ const TMDB_IMAGE_URL = process.env.REACT_APP_TMDB_IMAGE_URL
 
 export const TmdbProvider = ({ children }: Props) => {
     const initialState: {
+        firstTrending: MediaInterface | null,
         trending: MediaInterface[],
         popularMovies: MediaInterface[],
         popularTVShows: MediaInterface[]
+        movies: MediaInterface[],
     } = {
+        firstTrending: null,
         trending: [],
         popularMovies: [],
-        popularTVShows: []
+        popularTVShows: [],
+        movies: [],
     }
     const [state, dispatch] = useReducer(TmdbReducer, initialState)
 
@@ -119,11 +126,40 @@ export const TmdbProvider = ({ children }: Props) => {
 
     }
 
+    //get popular movies 
+    const fetchMovies = async (page: number) => {
+        const respnose = await fetch(`${TMDB_API_URL}/discover/movie?api_key=${TMDB_API_KEY}&sort_by=popularity.desc&page=${page}`)
+        const dataJson = await respnose.json()
+        let items: MediaInterface[] = []
+
+        dataJson.results.forEach((element: any) => {
+
+            let item: MediaInterface = {
+                id: element.id,
+                name: element.name,
+                overview: element.overview,
+                release_date: element.release_date,
+                poster_path: TMDB_IMAGE_URL + element.poster_path,
+                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+            }
+            items.push(item)
+
+        })
+
+        dispatch({
+            type: 'GET_MOVIES',
+            payload: items
+        } as DispatchData)
+
+    }
+
+
     return <TmdbContext.Provider value={{
         ...state,
         fetchTrending,
         fetchPopularMovies,
-        fetchPopularTVShows
+        fetchPopularTVShows,
+        fetchMovies
     }}>
         {children}
     </TmdbContext.Provider>

@@ -3,7 +3,8 @@ const TmdbReducer = (state: any, action: { type: string; payload: any }) => {
         case 'GET_TRENDING':
             return {
                 ...state,
-                trending: action.payload
+                trending: action.payload,
+                firstTrending: action.payload[0]
             };
         case 'GET_POPULAR_MOVIES':
             return {
@@ -14,6 +15,11 @@ const TmdbReducer = (state: any, action: { type: string; payload: any }) => {
             return {
                 ...state,
                 popularTVShows: action.payload
+            };
+        case 'GET_MOVIES':
+            return {
+                ...state,
+                movies: [...state.movies, ...action.payload]
             };
         default:
             return state;
