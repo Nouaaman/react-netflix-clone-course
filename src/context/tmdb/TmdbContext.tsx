@@ -1,6 +1,7 @@
 import React, { createContext, ReactNode, useReducer, } from 'react';
 import TmdbReducer from './TmbdReducer';
-import { MediaInterface } from "../../interfaces/interfaces";
+import { MediaInterface, SearchInterface } from "../../interfaces/interfaces";
+
 
 type Props = {
     children: ReactNode;
@@ -15,10 +16,19 @@ type TmdbContextType = {
     popularMovies: MediaInterface[],
     popularTVShows: MediaInterface[],
     movies: MediaInterface[],
+    tvShows: MediaInterface[],
+    latestMovies: MediaInterface[],
+    latestTVShows: MediaInterface[],
+    searchResults: MediaInterface[],
     fetchTrending(): void,
     fetchPopularMovies(): void,
     fetchPopularTVShows(): void,
-    fetchMovies(page: number): void
+    fetchMovies(): void,
+    fetchTVShows(): void,
+    fetchLatest(): void,
+    searchByQuery(query: string): void,
+    clearResults(): void,
+
 };
 
 const TmdbContext = createContext<TmdbContextType>({} as TmdbContextType)
@@ -34,15 +44,51 @@ export const TmdbProvider = ({ children }: Props) => {
         popularMovies: MediaInterface[],
         popularTVShows: MediaInterface[]
         movies: MediaInterface[],
+        tvShows: MediaInterface[],
+        latestMovies: MediaInterface[],
+        latestTVShows: MediaInterface[],
+        searchResults: MediaInterface[],
+
     } = {
         firstTrending: null,
         trending: [],
         popularMovies: [],
         popularTVShows: [],
         movies: [],
+        tvShows: [],
+        latestMovies: [],
+        latestTVShows: [],
+        searchResults: [],
+
     }
     const [state, dispatch] = useReducer(TmdbReducer, initialState)
 
+    function clearResults() {
+        dispatch({
+            type: 'CLEAR_RESULTS',
+            payload: []
+        } as DispatchData)
+    }
+
+    const searchByQuery = async (query: string) => {
+        const respnose = await fetch(`${TMDB_API_URL}/search/keyword?api_key=${TMDB_API_KEY}&query=${query}`)
+        const dataJson = await respnose.json()
+        let items: SearchInterface[] = []
+
+        dataJson.results.forEach((element: any) => {
+
+            let item: SearchInterface = {
+                id: element.id,
+                name: element.name,
+            }
+            items.push(item)
+        })
+
+        dispatch({
+            type: 'GET_SEARCH_RESULTS',
+            payload: items
+        } as DispatchData)
+    }
 
     //get trending movies and tvshows
     const fetchTrending = async () => {
@@ -54,12 +100,13 @@ export const TmdbProvider = ({ children }: Props) => {
         dataJson.results.forEach((element: any) => {
 
             let name = element.media_type === 'movie' ? element.title : element.name
+            let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
             let item: MediaInterface = {
                 id: element.id,
                 name: name,
                 overview: element.overview,
                 release_date: element.release_date,
-                poster_path: TMDB_IMAGE_URL + element.poster_path,
+                poster_path: poster,
                 backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
             }
             items.push(item)
@@ -78,15 +125,15 @@ export const TmdbProvider = ({ children }: Props) => {
         const respnose = await fetch(`${TMDB_API_URL}/discover/movie?api_key=${TMDB_API_KEY}&sort_by=popularity.desc`)
         const dataJson = await respnose.json()
         let items: MediaInterface[] = []
-
         dataJson.results.forEach((element: any) => {
-
+            let name = element.media_type === 'movie' ? element.title : element.name
+            let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
             let item: MediaInterface = {
                 id: element.id,
-                name: element.name,
+                name: name,
                 overview: element.overview,
                 release_date: element.release_date,
-                poster_path: TMDB_IMAGE_URL + element.poster_path,
+                poster_path: poster,
                 backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
             }
             items.push(item)
@@ -106,13 +153,14 @@ export const TmdbProvider = ({ children }: Props) => {
         let items: MediaInterface[] = []
 
         dataJson.results.forEach((element: any) => {
-
+            let name = element.media_type === 'movie' ? element.title : element.name
+            let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
             let item: MediaInterface = {
                 id: element.id,
-                name: element.name,
+                name: name,
                 overview: element.overview,
                 release_date: element.release_date,
-                poster_path: TMDB_IMAGE_URL + element.poster_path,
+                poster_path: poster,
                 backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
             }
             items.push(item)
@@ -126,25 +174,31 @@ export const TmdbProvider = ({ children }: Props) => {
 
     }
 
-    //get popular movies 
-    const fetchMovies = async (page: number) => {
-        const respnose = await fetch(`${TMDB_API_URL}/discover/movie?api_key=${TMDB_API_KEY}&sort_by=popularity.desc&page=${page}`)
-        const dataJson = await respnose.json()
+    //get  movies 
+    const fetchMovies = async () => {
+        //fetch 3 pages
         let items: MediaInterface[] = []
+        for (let index = 1; index < 4; index++) {
 
-        dataJson.results.forEach((element: any) => {
+            const respnose = await fetch(`${TMDB_API_URL}/discover/movie?api_key=${TMDB_API_KEY}&page=${index}&sort_by=popularity.desc`)
+            const dataJson = await respnose.json()
 
-            let item: MediaInterface = {
-                id: element.id,
-                name: element.name,
-                overview: element.overview,
-                release_date: element.release_date,
-                poster_path: TMDB_IMAGE_URL + element.poster_path,
-                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
-            }
-            items.push(item)
 
-        })
+            dataJson.results.forEach((element: any) => {
+                let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
+                let item: MediaInterface = {
+                    id: element.id,
+                    name: element.title,
+                    overview: element.overview,
+                    release_date: element.release_date,
+                    poster_path: poster,
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                }
+                items.push(item)
+
+            })
+
+        }
 
         dispatch({
             type: 'GET_MOVIES',
@@ -153,13 +207,114 @@ export const TmdbProvider = ({ children }: Props) => {
 
     }
 
+    //get  TV Shows 
+    const fetchTVShows = async () => {
+        //fetch 3 pages
+        let items: MediaInterface[] = []
+
+        for (let index = 1; index < 4; index++) {
+
+            const respnose = await fetch(`${TMDB_API_URL}/discover/tv?api_key=${TMDB_API_KEY}&page=${index}&sort_by=popularity.desc`)
+            const dataJson = await respnose.json()
+
+            dataJson.results.forEach((element: any) => {
+                let name = element.media_type === 'movie' ? element.title : element.name
+                let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
+                let item: MediaInterface = {
+                    id: element.id,
+                    name: name,
+                    overview: element.overview,
+                    release_date: element.release_date,
+                    poster_path: poster,
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                }
+                items.push(item)
+
+            })
+        }
+
+        dispatch({
+            type: 'GET_TVSHOWS',
+            payload: items
+        } as DispatchData)
+
+    }
+
+    //get  Latest 
+    const fetchLatest = async () => {
+        //chang elink to latest
+        //fetch 2 pages
+        let movies: MediaInterface[] = []
+
+        for (let index = 1; index < 3; index++) {
+
+            const respnose = await fetch(`${TMDB_API_URL}/discover/movie?api_key=${TMDB_API_KEY}&page=${index}&sort_by=release_date`)
+            const dataJson = await respnose.json()
+
+            dataJson.results.forEach((element: any) => {
+
+                let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
+                let item: MediaInterface = {
+                    id: element.id,
+                    name: element.title,
+                    overview: element.overview,
+                    release_date: element.release_date,
+                    poster_path: poster,
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                }
+                movies.push(item)
+
+            })
+        }
+
+        dispatch({
+            type: 'GET_LATEST_MOVIES',
+            payload: movies
+        } as DispatchData)
+
+        //tvshows
+        let tvshows: MediaInterface[] = []
+        for (let index = 1; index < 3; index++) {
+
+            const respnose = await fetch(`${TMDB_API_URL}/discover/tv?api_key=${TMDB_API_KEY}&page=${index}&sort_by=release_date`)
+            const dataJson = await respnose.json()
+
+            dataJson.results.forEach((element: any) => {
+                let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
+
+                let item: MediaInterface = {
+                    id: element.id,
+                    name: element.name,
+                    overview: element.overview,
+                    release_date: element.release_date,
+                    poster_path: poster,
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                }
+                tvshows.push(item)
+
+            })
+        }
+
+        dispatch({
+            type: 'GET_LATEST_TVSHOWS',
+            payload: tvshows
+        } as DispatchData)
+
+
+    }
+
+
 
     return <TmdbContext.Provider value={{
         ...state,
         fetchTrending,
         fetchPopularMovies,
         fetchPopularTVShows,
-        fetchMovies
+        fetchMovies,
+        fetchTVShows,
+        fetchLatest,
+        searchByQuery,
+        clearResults
     }}>
         {children}
     </TmdbContext.Provider>

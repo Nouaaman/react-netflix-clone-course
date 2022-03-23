@@ -1,15 +1,43 @@
 .card {
-    min-width:11em;
-    max-width:11em;
+    min-width: 11em;
+    max-width: 11em;
+    transition: .2s transform ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
-.card img{
+
+.card img {
     width: 100%;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card:hover .caption {
+   top: 0;
+   bottom: 0;
+}
+
+.card .caption {
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 100;
+    bottom: -100;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: .2s ease-in-out;
+    text-align: center;
 }
 
 
 @media (max-width: 456px) {
     .card {
-        min-width:9em;
-        max-width:9em;
+        min-width: 9em;
+        max-width: 9em;
     }
 }

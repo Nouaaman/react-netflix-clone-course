@@ -13,6 +13,7 @@ import Login from './pages/Login/Login'
 import NavBar from './components/layout/NavBar/NavBar'
 import Footer from './components/layout/Footer/Footer'
 import UserContext from "./context/user/UserContext";
+import Details from './components/Details/Details'
 
 function App() {
 
@@ -40,8 +41,9 @@ function App() {
                 <Route path='latest' element={<Latest />}></Route>
                 <Route path='mylist' element={<MyList />}></Route>
                 <Route path="login" element={<Login />}></Route>
-               
+
                 <Route path="*" element={<NotFound />} ></Route>
+                {isConnected && (<Details/>)}
             </Routes>
             <Footer />
         </BrowserRouter>

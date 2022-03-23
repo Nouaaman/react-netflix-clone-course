@@ -58,7 +58,8 @@ main {
   width: 100%;
 }
 
-@media (max-width: 456px) {
+
+@media (max-width: 950px) {
   main {
     padding: 100px 12px;
     width: 100%;

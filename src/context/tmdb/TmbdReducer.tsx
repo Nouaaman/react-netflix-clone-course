@@ -3,8 +3,8 @@ const TmdbReducer = (state: any, action: { type: string; payload: any }) => {
         case 'GET_TRENDING':
             return {
                 ...state,
+                firstTrending: action.payload[0],
                 trending: action.payload,
-                firstTrending: action.payload[0]
             };
         case 'GET_POPULAR_MOVIES':
             return {
@@ -19,8 +19,35 @@ const TmdbReducer = (state: any, action: { type: string; payload: any }) => {
         case 'GET_MOVIES':
             return {
                 ...state,
-                movies: [...state.movies, ...action.payload]
+                movies: action.payload
             };
+        case 'GET_TVSHOWS':
+            return {
+                ...state,
+                tvShows: action.payload
+            };
+        case 'GET_LATEST_MOVIES':
+            return {
+                ...state,
+                latestMovies: action.payload
+            };
+        case 'GET_LATEST_TVSHOWS':
+            return {
+                ...state,
+                latestTVShows: action.payload
+            };
+        case 'GET_SEARCH_RESULTS':
+            return {
+                ...state,
+                searchResults: action.payload
+            };
+        case 'CLEAR_RESULTS':
+            return {
+                ...state,
+                searchResults: action.payload
+            };
+
+
         default:
             return state;
     }

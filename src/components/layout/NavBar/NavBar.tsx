@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import './NavBar.css'
 import UserContext from "../../../context/user/UserContext";
+import Search from "../../Search/Search";
 
 
 
@@ -39,6 +40,10 @@ function NavBar() {
                 <div className="sign-in">
                     <NavLink to='login'><button className='sign-in-btn'>Sign In</button></NavLink>
                 </div>}
+
+            {isConnected &&
+                <Search/>
+            }
 
         </header>
     )

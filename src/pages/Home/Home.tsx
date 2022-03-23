@@ -22,28 +22,34 @@ function Home() {
         // eslint-disable-next-line
     }, [])
 
-    
+
     return (
         <main className='home'>
             <div className='trending-header' >
-                    <img src={firstTrending?.backdrop_path} alt="" />
+                <img src={firstTrending?.backdrop_path} alt={firstTrending?.name} />
 
-                <div className='content' >
-                    <div className='actions'>
+                <div className='container' >
+                    <div className='content'>
+                        <div className='description'>
+                            <h1>{firstTrending?.name}</h1>
+                            <p>{firstTrending?.overview}</p>
+                        </div>
+                        <div className='actions'>
 
-                        <button className='btn-play btn'>
-                            <span>
-                                <i className="fa-solid fa-play"></i>
-                            </span>
-                            <span>Play</span>
-                        </button>
+                            <button className='btn-play btn'>
+                                <span>
+                                    <i className="fa-solid fa-play"></i>
+                                </span>
+                                <span>Play</span>
+                            </button>
 
-                        <button className='btn-mylist btn'>
-                            <span>
-                                <i className="fa-solid fa-plus"></i>
-                            </span>
-                            <span>My List</span>
-                        </button>
+                            <button className='btn-mylist btn'>
+                                <span>
+                                    <i className="fa-solid fa-plus"></i>
+                                </span>
+                                <span>My List</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
