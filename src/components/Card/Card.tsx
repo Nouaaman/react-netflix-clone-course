@@ -4,12 +4,14 @@ import { MediaInterface } from "../../interfaces/interfaces";
 import './Card.css'
 
 function Card(props: { item: MediaInterface }) {
-    const { name, poster_path } = props.item
+    const { id, name, poster_path,media_type} = props.item
 
     const { showDetails, toggleDetails } = useContext(ModalContext)
 
     const handleClick = () => {
-        toggleDetails(true)
+        console.log(media_type);
+        
+        toggleDetails(true,id,media_type)
 
     }
 

@@ -1,4 +1,4 @@
-const DetailsReducer = (state: any, action: { type: string; payload: boolean }) => {
+const DetailsReducer = (state: any, action: { type: string; payload: any }) => {
     switch (action.type) {
         case 'OPEN_DETAILS':
             return {
@@ -9,6 +9,16 @@ const DetailsReducer = (state: any, action: { type: string; payload: boolean }) 
             return {
                 ...state,
                 showDetails: false
+            };
+        case 'GET_MOVIE':
+            return {
+                ...state,
+                media: action.payload
+            };
+        case 'GET_TV':
+            return {
+                ...state,
+                media: action.payload
             };
         default:
             return state;

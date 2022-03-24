@@ -22,6 +22,7 @@ export interface MediaInterface {
     release_date: Date,
     poster_path: string,
     backdrop_path: string,
+    media_type:string
 }
 
 

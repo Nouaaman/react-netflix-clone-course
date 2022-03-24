@@ -29,7 +29,6 @@ type TmdbContextType = {
     fetchLatest(): void,
     searchByQuery(query: string): void,
     clearResults(): void,
-
 };
 // const {toggleModal} = useContext(ModalContext)
 const TmdbContext = createContext<TmdbContextType>({} as TmdbContextType)
@@ -108,7 +107,8 @@ export const TmdbProvider = ({ children }: Props) => {
                 overview: element.overview,
                 release_date: element.release_date,
                 poster_path: poster,
-                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
+                media_type: element.media_type
             }
             items.push(item)
 
@@ -135,7 +135,8 @@ export const TmdbProvider = ({ children }: Props) => {
                 overview: element.overview,
                 release_date: element.release_date,
                 poster_path: poster,
-                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
+                media_type: 'movie'
             }
             items.push(item)
 
@@ -147,7 +148,7 @@ export const TmdbProvider = ({ children }: Props) => {
 
     }
 
-    //get popular movies 
+    //get popular tv 
     const fetchPopularTVShows = async () => {
         const respnose = await fetch(`${TMDB_API_URL}/discover/tv?api_key=${TMDB_API_KEY}&sort_by=popularity.desc`)
         const dataJson = await respnose.json()
@@ -162,7 +163,8 @@ export const TmdbProvider = ({ children }: Props) => {
                 overview: element.overview,
                 release_date: element.release_date,
                 poster_path: poster,
-                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
+                media_type: 'tv'
             }
             items.push(item)
 
@@ -193,7 +195,8 @@ export const TmdbProvider = ({ children }: Props) => {
                     overview: element.overview,
                     release_date: element.release_date,
                     poster_path: poster,
-                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
+                    media_type: 'movie'
                 }
                 items.push(item)
 
@@ -227,7 +230,8 @@ export const TmdbProvider = ({ children }: Props) => {
                     overview: element.overview,
                     release_date: element.release_date,
                     poster_path: poster,
-                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
+                    media_type: 'tv'
                 }
                 items.push(item)
 
@@ -254,14 +258,15 @@ export const TmdbProvider = ({ children }: Props) => {
 
             dataJson.results.forEach((element: any) => {
 
-                let poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
+                const poster = element.poster_path != null ? TMDB_IMAGE_URL + element.poster_path : null
                 let item: MediaInterface = {
                     id: element.id,
                     name: element.title,
                     overview: element.overview,
                     release_date: element.release_date,
                     poster_path: poster,
-                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
+                    media_type: 'movie'
                 }
                 movies.push(item)
 
@@ -289,7 +294,8 @@ export const TmdbProvider = ({ children }: Props) => {
                     overview: element.overview,
                     release_date: element.release_date,
                     poster_path: poster,
-                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path
+                    backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
+                    media_type: 'tv'
                 }
                 tvshows.push(item)
 
