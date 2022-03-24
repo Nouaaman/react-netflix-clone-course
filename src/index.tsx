@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import { TmdbProvider } from "./context/tmdb/TmdbContext";
 import { UserProvider } from "./context/user/UserContext";
+import { DetailsProvider } from "./context/details/DetailsContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <TmdbProvider>
-        <App />
+        <DetailsProvider>
+          <App />
+        </DetailsProvider>
       </TmdbProvider>
     </UserProvider>
   </React.StrictMode>,

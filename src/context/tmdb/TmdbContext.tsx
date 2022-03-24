@@ -1,6 +1,7 @@
-import React, { createContext, ReactNode, useReducer, } from 'react';
+import React, { createContext, ReactNode, useContext, useReducer, } from 'react';
 import TmdbReducer from './TmbdReducer';
 import { MediaInterface, SearchInterface } from "../../interfaces/interfaces";
+import DetailsContext from "../details/DetailsContext";
 
 
 type Props = {
@@ -30,7 +31,7 @@ type TmdbContextType = {
     clearResults(): void,
 
 };
-
+// const {toggleModal} = useContext(ModalContext)
 const TmdbContext = createContext<TmdbContextType>({} as TmdbContextType)
 
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY
@@ -302,6 +303,10 @@ export const TmdbProvider = ({ children }: Props) => {
 
 
     }
+
+
+    //details
+
 
 
 

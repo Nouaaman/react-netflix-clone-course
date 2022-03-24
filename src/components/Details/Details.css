@@ -1,0 +1,20 @@
+.details {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+.details .container{
+    width: 100%;
+    max-width: 700px;
+    height: 90%;
+    background-color: var(--main-bg-color);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.438);
+}

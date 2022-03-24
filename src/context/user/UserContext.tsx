@@ -10,7 +10,7 @@ type DispatchAuthentification = { type: string, payload: boolean }
 
 type UserContextType = {
     isConnected: boolean,
-    setIsConnected(auth:boolean): void
+    setIsConnected(auth: boolean): void
 };
 
 const UserContext = createContext<UserContextType>({} as UserContextType)

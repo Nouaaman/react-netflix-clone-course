@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MediaInterface } from "../../interfaces/interfaces";
 import './Details.css'
+import DetailsContext from "../../context/details/DetailsContext";
 
 //todo 
 /*
@@ -8,12 +9,24 @@ import './Details.css'
 */
 function Details() {
 
+    const { showDetails } = useContext(DetailsContext)
+
+
 
     return (
-        <div className="details">
-            <h1>details</h1>
-        </div>
-    );
-}
+        <>
+            {
+                showDetails && (
+                    <div className="details">
+                        <div className="container">
+                            <h1>details is SHOWEN</h1>
+                        </div>
 
-export default Details;
+                    </div>
+                )
+            }
+        </>
+
+    )
+}
+export default Details

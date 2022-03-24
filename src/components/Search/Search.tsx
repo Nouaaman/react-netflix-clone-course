@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import './Search.css'
 import TmdbContext from '../../context/tmdb/TmdbContext'
 
@@ -11,7 +11,7 @@ function Search() {
         searchResults,
         searchByQuery,
         clearResults
-    } = React.useContext(TmdbContext)
+    } = useContext(TmdbContext)
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const query: string = e.target.value.trim()

@@ -22,6 +22,7 @@ function App() {
     return (
 
         <BrowserRouter>
+            {isConnected && <Details />}
             <NavBar />
             <Routes>
                 {/* redirect to landing page if not connected */}
@@ -43,7 +44,6 @@ function App() {
                 <Route path="login" element={<Login />}></Route>
 
                 <Route path="*" element={<NotFound />} ></Route>
-                {isConnected && (<Details/>)}
             </Routes>
             <Footer />
         </BrowserRouter>
