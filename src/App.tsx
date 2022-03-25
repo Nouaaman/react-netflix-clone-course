@@ -8,7 +8,6 @@ import NotFound from './pages/NotFound/NotFound'
 import TVShows from './pages/TVShows/TVShows'
 import Movies from './pages/Movies/Movies'
 import Latest from './pages/Latest/Latest'
-import MyList from './pages/MyList/MyList'
 import Login from './pages/Login/Login'
 import NavBar from './components/layout/NavBar/NavBar'
 import Footer from './components/layout/Footer/Footer'
@@ -34,7 +33,6 @@ function App() {
                         <Route path='TVShows' element={<TVShows />}></Route>
                         <Route path='movies' element={<Movies />}></Route>
                         <Route path='latest' element={<Latest />}></Route>
-                        <Route path='mylist' element={<MyList />}></Route>
 
                         <Route path="Profiles" element={<Profiles />}></Route>
 

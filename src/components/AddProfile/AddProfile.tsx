@@ -10,7 +10,10 @@ const AddProfile = (props: any) => {
     const images = [
         'assets/avatar1.png',
         'assets/avatar2.jpg',
-        'assets/avatar3.jpg'
+        'assets/avatar3.jpg',
+        'assets/avatar4.jpg',
+        'assets/avatar6.png',
+        'assets/avatar7.png',
     ]
 
 
@@ -18,7 +21,7 @@ const AddProfile = (props: any) => {
         e.preventDefault()
         if (name.trim().length > 0) {//form validation
             // let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-            let randomNumber = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+            let randomNumber = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
 
             props.onSubmit({
                 id: Date.now(),

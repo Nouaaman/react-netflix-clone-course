@@ -36,7 +36,6 @@ function NavBar() {
                             <NavLink to='TVShows'><li>TV Shows</li></NavLink>
                             <NavLink to='Movies'><li>Movies</li></NavLink>
                             <NavLink to='Latest'><li>Latest</li></NavLink>
-                            <NavLink to='MyList'><li>My list</li></NavLink>
                         </ul>
                     </nav>
                 }
