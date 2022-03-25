@@ -253,7 +253,7 @@ export const TmdbProvider = ({ children }: Props) => {
 
         for (let index = 1; index < 3; index++) {
 
-            const respnose = await fetch(`${TMDB_API_URL}/discover/movie?api_key=${TMDB_API_KEY}&page=${index}&sort_by=release_date`)
+            const respnose = await fetch(`${TMDB_API_URL}/discover/movie?api_key=${TMDB_API_KEY}&page=${index}&sort_by=release_date.desc`)
             const dataJson = await respnose.json()
 
             dataJson.results.forEach((element: any) => {

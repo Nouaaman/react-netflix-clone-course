@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import './NavBar.css'
 import UserContext from "../../../context/user/UserContext";
@@ -8,9 +8,13 @@ import Search from "../../Search/Search";
 
 
 function NavBar() {
-    const { isConnected } = React.useContext(UserContext)
+    const { isConnected, setIsConnected } = React.useContext(UserContext)
     const [isShown, setShown] = useState(false)
+    const [showProfileMenu, setShowProfileMenu] = useState(false)
     const { pathname } = useLocation();
+
+
+
     return (
         <header className={isConnected ? 'sticky' : 'spaced'}>
             {isConnected && //show menu toggle if connected
@@ -43,8 +47,29 @@ function NavBar() {
                 </div>}
 
             {isConnected &&
-                <Search />
+                <div className='profile-notifications'>
+                    <Search />
+                    <div className="profile">
+                        <div className='notification'>
+                            <img src="assets/icons-notification.png" alt="" />
+                        </div>
+                        <div className='profile-container'>
+
+                            <button className='btn-profile' onClick={() => setShowProfileMenu(!showProfileMenu)} >
+                                <img src="assets/icons-user.png" alt="" />
+                            </button>
+                            <div className={showProfileMenu ? 'menu' : 'menu hidden'}>
+                                <ul>
+                                    <NavLink to='Profiles'><li>Profiles</li></NavLink>
+                                    <NavLink onClick={()=>setIsConnected(false)} to='/'><li>LogOut</li></NavLink>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
+
+
 
         </header>
     )

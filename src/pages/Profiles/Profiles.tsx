@@ -3,6 +3,7 @@ import UserContext from '../../context/user/UserContext'
 import { useNavigate } from 'react-router';
 import AddProfile from "../../components/AddProfile/AddProfile";
 import './Profiles.css'
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -74,7 +75,8 @@ function Profiles() {
                             <span className='img' style={{ backgroundImage: `url('${p.imageUrl}')` }}>
                                 <button className='btn-delete' onClick={() => handleDeleteProfile(p.id)}><i className="fa-solid fa-trash-can"></i></button>
                             </span>
-                            <span className='name'>{p.name}</span>
+                            <NavLink to='/Home'><span className='name'>{p.name}</span></NavLink>
+
                         </li>
                     ))}
                     {profiles.length < 5 && (

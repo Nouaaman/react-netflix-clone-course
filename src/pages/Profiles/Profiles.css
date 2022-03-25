@@ -38,6 +38,12 @@ main.profiles .content li {
 
 }
 
+main.profiles .content li .name:hover {
+    text-decoration: underline;
+    color: #fff;
+
+}
+
 main.profiles .content li .img {
     position: relative;
     width: 100px;
@@ -89,9 +95,9 @@ main.profiles .content .btn-delete {
     color: rgba(255, 255, 255, 0.5);
     border: none;
     cursor: pointer;
-    
+
 }
 
-main.profiles .content li .img:hover .btn-delete{
+main.profiles .content li .img:hover .btn-delete {
     display: flex;
 }

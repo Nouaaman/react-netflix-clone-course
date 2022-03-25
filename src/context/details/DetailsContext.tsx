@@ -81,6 +81,8 @@ export const DetailsProvider = ({ children }: Props) => {
             backdrop_path: TMDB_IMAGE_URL + element.backdrop_path,
             genres: element.genres
         }
+        console.log(element.release_date);
+        
 
         dispatch({
             type: 'GET_MOVIE',

@@ -19,7 +19,7 @@ export const UserProvider = ({ children }: Props) => {
     const initialState: {
         isConnected: boolean,
     } = {
-        isConnected: true,
+        isConnected: false,
     }
     const [state, dispatch] = useReducer(UserReducer, initialState)
 

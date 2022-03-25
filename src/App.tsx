@@ -31,19 +31,21 @@ function App() {
                     <>
                         <Route index element={<Home />}></Route>
                         <Route path='home' element={<Home />}></Route>
+                        <Route path='TVShows' element={<TVShows />}></Route>
+                        <Route path='movies' element={<Movies />}></Route>
+                        <Route path='latest' element={<Latest />}></Route>
+                        <Route path='mylist' element={<MyList />}></Route>
+
+                        <Route path="Profiles" element={<Profiles />}></Route>
 
                     </> :
                     <>
                         <Route index element={<Landing />}></Route>
                         <Route path='home' element={<Landing />}></Route>
+                        <Route path="login" element={<Login />}></Route>
                     </>
                 }
-                <Route path='TVShows' element={<TVShows />}></Route>
-                <Route path='movies' element={<Movies />}></Route>
-                <Route path='latest' element={<Latest />}></Route>
-                <Route path='mylist' element={<MyList />}></Route>
-                <Route path="login" element={<Login />}></Route>
-                <Route path="Profiles" element={<Profiles />}></Route>
+
                 <Route path="*" element={<NotFound />} ></Route>
             </Routes>
             <Footer />
