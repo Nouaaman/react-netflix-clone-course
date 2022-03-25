@@ -24,7 +24,7 @@ function Search() {
 
     return (
         <div className='search-container'>
-            <input type="search" onChange={handleChange} />
+            <input type="search" onChange={handleChange} placeholder='Search' />
             <div className='results'>
                 <ul>
                     {

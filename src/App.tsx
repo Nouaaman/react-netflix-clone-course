@@ -14,6 +14,7 @@ import NavBar from './components/layout/NavBar/NavBar'
 import Footer from './components/layout/Footer/Footer'
 import UserContext from "./context/user/UserContext";
 import Details from './components/Details/Details'
+import Profiles from "./pages/Profiles/Profiles";
 
 function App() {
 
@@ -42,11 +43,11 @@ function App() {
                 <Route path='latest' element={<Latest />}></Route>
                 <Route path='mylist' element={<MyList />}></Route>
                 <Route path="login" element={<Login />}></Route>
-
+                <Route path="Profiles" element={<Profiles />}></Route>
                 <Route path="*" element={<NotFound />} ></Route>
             </Routes>
             <Footer />
-        </BrowserRouter>
+        </BrowserRouter >
     )
 }
 export default App

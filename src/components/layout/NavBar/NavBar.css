@@ -30,7 +30,11 @@ header .menu-toggle {
     display: none;
     cursor: pointer;
 }
-
+header .nav-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 nav ul.nav-links {
     display: flex;

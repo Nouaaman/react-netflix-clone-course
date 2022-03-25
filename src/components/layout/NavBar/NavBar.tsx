@@ -19,30 +19,31 @@ function NavBar() {
                     {isShown && (<i className="fa-solid fa-xmark icon"></i>)}
                 </div>
             }
-
-            <div className='logo'>
-                <Link to='/'>  <img src='assets/netflix-logo.svg' alt='logo' /></Link>
+            <div className='nav-wrapper'>
+                <div className='logo'>
+                    <Link to='/'>  <img src='assets/netflix-logo.svg' alt='logo' /></Link>
+                </div>
+                {isConnected && //show nav if connected
+                    <nav className={isShown ? 'shown' : ''}>
+                        <ul className='nav-links'>
+                            <NavLink to='Home' className={['/', 'home'].includes(pathname) ? 'active' : ''}  >
+                                <li>Home</li>
+                            </NavLink>
+                            <NavLink to='TVShows'><li>TV Shows</li></NavLink>
+                            <NavLink to='Movies'><li>Movies</li></NavLink>
+                            <NavLink to='Latest'><li>Latest</li></NavLink>
+                            <NavLink to='MyList'><li>My list</li></NavLink>
+                        </ul>
+                    </nav>
+                }
             </div>
-            {isConnected && //show nav if connected
-                <nav className={isShown ? 'shown' : ''}>
-                    <ul className='nav-links'>
-                        <NavLink to='Home' className={['/', 'home'].includes(pathname) ? 'active' : ''}  >
-                            <li>Home</li>
-                        </NavLink>
-                        <NavLink to='TVShows'><li>TV Shows</li></NavLink>
-                        <NavLink to='Movies'><li>Movies</li></NavLink>
-                        <NavLink to='Latest'><li>Latest</li></NavLink>
-                        <NavLink to='MyList'><li>My list</li></NavLink>
-                    </ul>
-                </nav>
-            }
             {!isConnected &&
                 <div className="sign-in">
                     <NavLink to='login'><button className='sign-in-btn'>Sign In</button></NavLink>
                 </div>}
 
             {isConnected &&
-                <Search/>
+                <Search />
             }
 
         </header>
