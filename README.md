@@ -1,4 +1,10 @@
 # react-netflix-clone-course
+- Nouaaman Roudane
+-create .env file and past this with your api key:
+REACT_APP_TMDB_API_KEY = "your_api_key"
+REACT_APP_TMDB_API_URL = "https://api.themoviedb.org/3"
+REACT_APP_TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/original"
+
 
 ## Features
 
